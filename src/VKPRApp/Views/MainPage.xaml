@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.MainPage">
+
+    <ScrollView>
+        <Grid>
+            <StackLayout>
+                <Grid Margin="0,20,0,0">
+                    <Frame CornerRadius="360"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           BackgroundColor="LightGray"
+                           Margin="240,0,0,0"/>
+
+                    <Label Text="{Binding FullName}"
+                           FontSize="17"
+                           HeightRequest="30"
+                           FontAttributes="Bold"
+                           Margin="150,0,0,0"/>
+                </Grid>
+
+                <Label FontSize="23"
+                       WidthRequest="280"
+                       HeightRequest="35"
+                       Text="Личный кабинет"
+                       Margin="20,30,0,0"/>
+
+                <Frame HeightRequest="90"
+                       WidthRequest="285"
+                       Margin="0,15,0,0"
+                       BorderColor="LightGray">
+
+                    <Grid>
+                        <Label FontSize="13"
+                               TextColor="Gray"
+                               Text="Актуальное количество участников, которые уже присоединились к нашей системе: "/>
+
+                        <Label FontSize="15"
+                               TextColor="#68A0FF"
+                               Text="{Binding UsersCount}"
+                               HeightRequest="20"
+                               Margin="55,36,0,0"
+                               FontAttributes="Bold"/>
+                    </Grid>
+                </Frame>
+
+                <Label FontSize="23"
+                       WidthRequest="280"
+                       HeightRequest="35"
+                       Text="Публикация поста"
+                       Margin="10,30,0,0"/>
+
+                <Border WidthRequest="80"
+                        HeightRequest="5"
+                        Background="#3376FF"
+                        Margin="0,0,190,0"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="0"/>
+
+                <Border WidthRequest="270"
+                        HeightRequest="45"
+                        Margin="0,20,0,0"
+                        Background="Transparent"
+                        StrokeShape="RoundRectangle 8,8,8,8">
+
+                    <Grid>
+                        <Entry FontSize="15"
+                               TextColor="Black"
+                               Margin="10,0,0,0"
+                               VerticalOptions="Center"
+                               Keyboard="Url"
+                               Text="{Binding PostUrlToPromote}"/>
+                    </Grid>
+                </Border>
+
+                <Label FontSize="13"
+                       TextColor="Gray"
+                       HeightRequest="20"
+                       Text="Вставьте в строку ссылку на ваш пост"
+                       Margin="30,10,0,0"/>
+
+                <Button Margin="0,20,0,0"
+                        WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Продвигать"
+                        TextColor="White"
+                        FontSize="16"
+                        Command="{Binding PromoteCommand}">
+
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                            <GradientStop Color="#3376FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+
+                <Label FontSize="17"
+                       WidthRequest="280"
+                       HeightRequest="35"
+                       Text="Заказать репосты и комментарии"
+                       Margin="10,30,0,-6"/>
+
+                <Border WidthRequest="80"
+                        HeightRequest="5"
+                        Background="#3376FF"
+                        Margin="0,0,190,0"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="0"/>
+
+                <Border WidthRequest="270"
+                        HeightRequest="45"
+                        Margin="0,20,0,0"
+                        StrokeShape="RoundRectangle 8,8,8,8">
+
+                    <Entry FontSize="15"
+                           TextColor="Black"
+                           Margin="10,0,0,0"
+                           VerticalOptions="Center"
+                           Keyboard="Url"
+                           Text="{Binding PostUrl}"/>
+                </Border>
+
+                <Label FontSize="13"
+                       TextColor="Gray"
+                       HeightRequest="20"
+                       Text="Вставьте в строку ссылку на ваш пост"
+                       Margin="30,10,0,0"/>
+
+                <RadioButton Margin="0,20,140,0"
+                             HeightRequest="20"
+                             WidthRequest="100"
+                             TextColor="Black"
+                             Content="Репост"
+                             FontAttributes="Bold"
+                             x:Name="button"/>
+
+                <RadioButton Margin="0,10,140,0"
+                             HeightRequest="20"
+                             WidthRequest="100"
+                             TextColor="Black"
+                             Content="Коммент"
+                             FontAttributes="Bold"
+                             x:Name="button1"/>
+
+                <Border WidthRequest="270"
+                        HeightRequest="45"
+                        Margin="0,25,0,0"
+                        StrokeShape="RoundRectangle 8,8,8,8">
+
+                    <Entry FontSize="15"
+                           TextColor="Black"
+                           Margin="10,0,0,0"
+                           VerticalOptions="Center"
+                           Keyboard="Numeric"/>
+                </Border>
+
+                <Label FontSize="13"
+                       TextColor="Gray"
+                       HeightRequest="20"
+                       Text="{Binding CountMessage}"
+                       Margin="30,10,0,0"/>
+
+                <Button Margin="0,20,0,0"
+                        WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Заказать"
+                        TextColor="White"
+                        FontSize="16"
+                        Command="{Binding GoToRepostPaymentPageCommand}">
+
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                            <GradientStop Color="#3376FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+
+                <Button HeightRequest="40"
+                        WidthRequest="250"
+                        Margin="0,10,0,0"
+                        Background="Transparent"
+                        Text="Посмотреть другие тарифы"
+                        TextColor="#3376FF"
+                        BorderColor="Gray"/>
+
+                <Label FontSize="20"
+                       WidthRequest="280"
+                       HeightRequest="35"
+                       Text="Программа лояльности"
+                       Margin="10,20,0,-6"/>
+
+                <Border WidthRequest="70"
+                        HeightRequest="5"
+                        Background="#3376FF"
+                        Margin="0,0,200,0"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="0"/>
+
+                <Label FontSize="14"
+                       TextColor="Gray"
+                       HeightRequest="40"
+                       Text="Пригласите друга и получите 50 рублей на ваш баланс"
+                       Margin="30,10,0,0"/>
+
+                <Button Margin="0,20,0,200"
+                        WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Пригласить"
+                        TextColor="White"
+                        FontSize="16">
+
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                            <GradientStop Color="#3376FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

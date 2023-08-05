@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.InfoPage"
+             Title="InfoPage"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <StackLayout>
+            <Label FontSize="25"
+                   WidthRequest="280"
+                   HeightRequest="35"
+                   Text="{Binding FullName}"
+                   Margin="0,30,0,0"/>
+
+            <Border WidthRequest="70"
+                    HeightRequest="5"
+                    Background="#3376FF"
+                    Margin="0,5,210,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeThickness="0"/>
+
+            <Grid Margin="0,30,0,0">
+                <Label TextColor="DarkGray"
+                       Text="Баланс"
+                       FontSize="18"
+                       WidthRequest="60"
+                       HeightRequest="20"
+                       Margin="0,0,220,0"/>
+
+                <Label Text="{Binding Wallet}"
+                       FontAttributes="Bold"
+                       Margin="120,0,0,0"
+                       FontSize="20"/>
+            </Grid>
+
+            <Label FontSize="20"
+                   Text="Подписка"
+                   WidthRequest="90"
+                   HeightRequest="25"
+                   Margin="0,50,190,0"/>
+
+            <Border WidthRequest="65"
+                    HeightRequest="5"
+                    Background="#3376FF"
+                    Margin="0,5,215,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeThickness="0"/>
+
+            <Grid Margin="0,20,0,0">
+                <Button WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Активировать подписку"
+                        TextColor="White"
+                        FontSize="16"
+                        Command="{Binding SubscribeCommand}">
+
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                            <GradientStop Color="#3376FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+                <Button WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        BorderColor="#00A92F"
+                        BorderWidth="1"
+                        TextColor="#00A92F"
+                        Text="Подписка активна"
+                        Background="White"
+                        FontSize="16"
+                        IsVisible="{Binding IsSubscribed}"/>
+            </Grid>
+
+            <Border WidthRequest="270"
+                    HeightRequest="45"
+                    Margin="0,10,0,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    IsVisible="{Binding IsSubscribed}">
+                <Grid>
+                    <Label Text="Срок окончания подписки:"
+                           VerticalOptions="Center"
+                           WidthRequest="172"
+                           Margin="0,0,50,0"
+                           TextColor="Gray"
+                           FontAttributes="Bold"/>
+                    
+                    <Label Text="{Binding ExpireDate}"
+                           TextColor="Gray"
+                           VerticalOptions="Center"
+                           WidthRequest="40"
+                           Margin="170,0,0,0"/>
+                </Grid>
+            </Border>
+
+            <Grid Margin="0,20,0,0">
+                <Button WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Поставить автопродление"
+                        TextColor="White"
+                        FontSize="16"
+                        IsVisible="{Binding IsSubscribed}"
+                        Command="{Binding SwitchRenewalCommand}">
+
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                            <GradientStop Color="#3376FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+
+                <Button WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        FontSize="16"
+                        Command="{Binding SwitchRenewalCommand}"
+                        BorderColor="#3376FF"
+                        Text="Убрать автопродление"
+                        BorderWidth="1"
+                        TextColor="#3376FF"
+                        Background="White"
+                        IsVisible="{Binding IsAutoRenewal}"/>
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <Button WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Привязать карту"
+                        TextColor="#3376FF"
+                        FontSize="16"
+                        IsVisible="True"
+                        Background="White"
+                        BorderColor="#3376FF"
+                        BorderWidth="1"
+                        Command="{Binding GoToLinkCardPageCommand}">
+                </Button>
+                <Button WidthRequest="280"
+                        HeightRequest="50"
+                        CornerRadius="30"
+                        Text="Отвязать карту"
+                        TextColor="White"
+                        FontSize="16"
+                        Command="{Binding UnlinkCardCommand}"
+                        IsVisible="{Binding IsCardLinked}">
+
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                            <GradientStop Color="#3376FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+            </Grid>
+
+            <Label Text="Правила публикации постов"
+                   FontSize="18"
+                   HeightRequest="25"
+                   WidthRequest="240"
+                   Margin="0,60,40,0"
+                   IsVisible="{Binding IsSubscribed}"/>
+
+            <Border WidthRequest="65"
+                    HeightRequest="5"
+                    Background="#3376FF"
+                    Margin="0,5,215,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeThickness="0"
+                    IsVisible="{Binding IsSubscribed}"/>
+
+            <Label TextColor="Gray"
+                   FontSize="13"
+                   Text="— Запрещено размещение контента, связанного с наркотиками, незаконными веществами и их распространением. Мы настоятельно просим вас не публиковать, обсуждать или поощрять потребление незаконных веществ."
+                   WidthRequest="280"
+                   Margin="0,20,0,0"
+                   IsVisible="{Binding IsSubscribed}"/>
+
+            <Label TextColor="Gray"
+                   FontSize="13"
+                   WidthRequest="280"
+                   IsVisible="{Binding IsSubscribed}"
+                   Margin="0,20,0,0"
+                   Text="— Запрещено размещение порнографического контента, откровенных или непристойных материалов. Мы придерживаемся политики ненасильственности и запрещаем публикацию материалов, нарушающих нормы приличия."/>
+
+            <Label TextColor="Gray"
+                   FontSize="13"
+                   WidthRequest="280"
+                   Margin="0,20,0,0"
+                   IsVisible="{Binding IsSubscribed}"
+                   Text="— Не допускается публикация материалов, содержащих оскорбительную, дискриминационную или ненавистническую риторику. Мы поддерживаем уважительное общение и просим вас быть вежливыми и толерантными в своих публикациях."/>
+
+            <Label TextColor="Gray"
+                   FontSize="13"
+                   WidthRequest="280"
+                   Margin="0,20,0,0"
+                   IsVisible="{Binding IsSubscribed}"
+                   Text="— Запрещено публиковать информацию, которая может причинить вред другим пользователям или нарушить их конфиденциальность. Пожалуйста, будьте осмотрительны и уважайте права и приватность других людей."/>
+
+            <Label TextColor="Gray"
+                   FontSize="13"
+                   WidthRequest="280"
+                   Margin="0,20,0,0"
+                   IsVisible="{Binding IsSubscribed}"
+                   Text="— Каждый пользователь может размещать только один пост в течение одного дня. Мы стремимся обеспечить равные возможности для всех наших пользователей и ограничиваем количество публикаций в целях поддержания честной и справедливой среды."/>
+
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

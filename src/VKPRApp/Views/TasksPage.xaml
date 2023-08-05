@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.TasksPage"
+             Title="TasksPage"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <StackLayout>
+            <Label FontSize="25"
+                   WidthRequest="280"
+                   HeightRequest="35"
+                   Text="Список заданий"
+                   Margin="0,20,0,0"/>
+
+            <Border WidthRequest="70"
+                    HeightRequest="5"
+                    Background="#3376FF"
+                    Margin="0,5,210,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeThickness="0"/>
+
+            <Grid Margin="0,30,0,0">
+                
+                <Label FontSize="20"
+                       Text="Заработать на"
+                       HeightRequest="25"
+                       WidthRequest="140"
+                       Margin="0,0,140,0"/>
+                
+                <Label FontSize="20"
+                       HeightRequest="25"
+                       WidthRequest="133"
+                       Text="комментариях"
+                       Margin="125,0,0,0"
+                       FontAttributes="Bold"/>
+                
+            </Grid>
+            
+            <Border WidthRequest="70"
+                    HeightRequest="5"
+                    Background="#3376FF"
+                    Margin="0,5,210,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeThickness="0"/>
+        
+                <Border HeightRequest="230"
+                        WidthRequest="280"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        Margin="0,20,0,0">
+                    
+                    <Grid>
+                        <Label Text="Нету заданий"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               FontSize="15"
+                               TextColor="Gray"/>
+
+                        <Border HeightRequest="220"
+                                WidthRequest="270"
+                                StrokeThickness="0"
+                                IsVisible="{Binding IsVisibleCommentTask}">
+                    
+                            <StackLayout>
+                            
+                                <Label FontSize="18"
+                                       FontAttributes="Bold"
+                                       Text="Комментарий"
+                                       HeightRequest="20"
+                                       WidthRequest="120"
+                                       Margin="0,10,110,0"/>
+
+                                <Label FontSize="13"
+                                       WidthRequest="240"
+                                       TextColor="DarkGray"
+                                       Text="Сделайте комментарий на своей личной странице, чтобы помочь распространить интересный контент и получить вознаграждение."
+                                       Margin="10,10,0,0"/>
+
+                                <Grid Margin="0,10,0,0">
+                            
+                                    <Label FontSize="13"
+                                           TextColor="Gray"
+                                           Text="Оплата:"
+                                           Margin="20,0,0,0"/>
+                            
+                                    <Label FontSize="13"
+                                           TextColor="Gray"
+                                           Text="3₽"
+                                           Margin="70,0,0,0"
+                                           FontAttributes="Bold"/>
+
+                                    <Button Margin="0,30,0,0"
+                                            WidthRequest="240"
+                                            HeightRequest="50"
+                                            CornerRadius="30"
+                                            Text="Выполнить"
+                                            TextColor="White"
+                                            HorizontalOptions="Center"
+                                            FontSize="16"
+                                            Command="{Binding GoToGuideTaskPageCommand}"
+                                            CommandParameter="Comment">
+
+                                        <Button.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="#68A0FF" Offset="0.5" />
+                                                <GradientStop Color="#3376FF" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+
+                                    </Button>
+                                </Grid>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                </Border>
+
+            <Grid Margin="0,30,0,0">
+                
+                <Label FontSize="20"
+                       Text="Заработать на"
+                       HeightRequest="25"
+                       WidthRequest="140"
+                       Margin="0,0,140,0"/>
+                
+                <Label FontSize="20"
+                       HeightRequest="25"
+                       WidthRequest="133"
+                       Text="репостах"
+                       Margin="125,0,0,0"
+                       FontAttributes="Bold"/>
+            </Grid>
+            
+            <Border WidthRequest="70"
+                    HeightRequest="5"
+                    Background="#3376FF"
+                    Margin="0,5,210,0"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeThickness="0"/>
+
+            <Border HeightRequest="230"
+                    WidthRequest="280"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Margin="0,20,0,0">
+
+                <Grid>
+                    <Label Text="Нету заданий"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           TextColor="Gray"/>
+
+                    <Border HeightRequest="220"
+                            WidthRequest="270"
+                            StrokeThickness="0"
+                            IsVisible="{Binding IsVisibleRepostTask}">
+
+                        <StackLayout>
+                            <Label FontSize="18"
+                                   FontAttributes="Bold"
+                                   Text="Репост"
+                                   HeightRequest="20"
+                                   WidthRequest="120"
+                                   Margin="0,10,110,0"/>
+
+                            <Label FontSize="13"
+                                   WidthRequest="240"
+                                   TextColor="DarkGray"
+                                   Text="Сделайте репост на своей личной странице, чтобы помочь распространить интересный контент и получить вознаграждение."
+                                   Margin="10,10,0,0"/>
+
+                            <Grid Margin="0,10,0,0">
+
+                                <Label FontSize="13"
+                                       TextColor="Gray"
+                                       Text="Оплата:"
+                                       Margin="20,0,0,0"/>
+
+                                <Label FontSize="13"
+                                       TextColor="Gray"
+                                       Text="5₽"
+                                       Margin="70,0,0,0"
+                                       FontAttributes="Bold"/>
+
+                                <Button Margin="0,30,0,0"
+                                        WidthRequest="240"
+                                        HeightRequest="50"
+                                        CornerRadius="30"
+                                        Text="Выполнить"
+                                        TextColor="White"
+                                        HorizontalOptions="Center"
+                                        FontSize="16"
+                                        Command="{Binding GoToGuideTaskPageCommand}"
+                                        CommandParameter="Repost">
+
+                                    <Button.Background>
+                                        <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                            <GradientStop Color="#68A0FF" Offset="0.5" />
+                                            <GradientStop Color="#3376FF" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+
+                                </Button>
+                            </Grid>
+                        </StackLayout>
+                    </Border>
+                </Grid>
+            </Border>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

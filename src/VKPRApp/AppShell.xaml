@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="VKPRApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VKPRApp"
+    xmlns:views="clr-namespace:VKPRApp.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="#68A0FF"
+    Shell.TabBarUnselectedColor="#3376FF"
+    Shell.TabBarTitleColor="#3376FF">
+
+
+    <ShellContent Route="WelcomePage"
+                  ContentTemplate="{DataTemplate views:WelcomePage}"/>
+
+    <TabBar>
+        <Tab Icon="tasks">
+            <ShellContent Route="TasksPage"
+                          ContentTemplate="{DataTemplate views:TasksPage}"/>
+        </Tab>
+        <Tab Icon="main">
+            <ShellContent Route="MainPage"
+                          ContentTemplate="{DataTemplate views:MainPage}"/>
+        </Tab>
+        <Tab Icon="info">
+            <ShellContent Route="InfoPage"
+                          ContentTemplate="{DataTemplate views:InfoPage}"/>
+        </Tab>
+        <Tab Icon="notifications">
+            <ShellContent Route="NotificationsPage"
+                          ContentTemplate="{DataTemplate views:NotificationsPage}"/>
+        </Tab>
+    </TabBar>
+
+</Shell>

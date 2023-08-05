@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.SuccessfullCompletedTaskPage"
+             Title="SuccessfullCompletedTaskPage"
+             Shell.NavBarIsVisible="False">
+
+    <StackLayout>
+        
+        <Label TextColor="#00A92F"
+               FontSize="23"
+               Text="Поздравляем! Вы успешно выполнили задание"
+               HorizontalOptions="Center"
+               Margin="25,40,0,0"/>
+
+        <Border WidthRequest="280"
+                HeightRequest="50"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                Margin="0,20,0,0">
+
+            <Grid>
+                <Label TextColor="Gray"
+                       FontSize="17"
+                       Text="Вам зачисленно:"
+                       VerticalOptions="Center"
+                       Margin="20,0,0,0"
+                       FontAttributes="Bold"/>
+
+                <Label VerticalOptions="Center"
+                       TextColor="Gray"
+                       Text="{Binding RewardMessage}"
+                       FontSize="17"
+                       Margin="155,0,0,0"/>
+            </Grid>
+            
+        </Border>
+
+        <Button Margin="0,20,0,0"
+                WidthRequest="280"
+                HeightRequest="50"
+                CornerRadius="30"
+                Text="Еще задания"
+                TextColor="White"
+                FontSize="16"
+                Command="{Binding GoToTaskPageCommand}">
+
+            <Button.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                    <GradientStop Color="#68A0FF" Offset="0.5" />
+                    <GradientStop Color="#3376FF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+
+    </StackLayout>
+
+</ContentPage>

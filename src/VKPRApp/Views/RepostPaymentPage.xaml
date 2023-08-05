@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.RepostPaymentPage"
+             Title="RepostPaymentPage"
+             Shell.NavBarIsVisible="False">
+
+    <StackLayout>
+        <Grid>
+            <ImageButton Source="backbutton"
+                         WidthRequest="20"
+                         HeightRequest="30"
+                         Margin="0,30,220,0"
+                         Command="{Binding NavigateBackCommand}"/>
+            
+            <Button Text="Назад"
+                    Margin="0,28,140,0"
+                    FontSize="16"
+                    TextColor="#006FFD"
+                    BackgroundColor="Transparent"
+                    BorderWidth="0"
+                    HeightRequest="40"
+                    WidthRequest="75"
+                    Command="{Binding NavigateBackCommand}"/>
+        </Grid>
+        
+        <Label FontSize="25"
+               WidthRequest="280"
+               HeightRequest="35"
+               Text="{Binding TaskName}"
+               Margin="20,30,0,0"/>
+
+        <Grid Margin="0,10,0,-20">
+            <Border HeightRequest="2"
+                    WidthRequest="20"
+                    BackgroundColor="Gray"
+                    StrokeThickness="0"
+                    Margin="0,0,240,0"/>
+            
+            <Label HeightRequest="30"
+                   WidthRequest="100"
+                   Text="Репост"
+                   Margin="0,10,110,0"
+                   FontAttributes="Bold"/>
+            
+            <Label HeightRequest="30"
+                   WidthRequest="100"
+                   Text="15 рублей"
+                   Margin="0,10,10,0"/>
+        </Grid>
+
+        <Grid Margin="0,0,0,0">
+            <Border HeightRequest="2"
+                    WidthRequest="20"
+                    BackgroundColor="Gray"
+                    StrokeThickness="0"
+                    Margin="0,0,240,0"/>
+            
+            <Label HeightRequest="30"
+                   WidthRequest="100"
+                   Text="Коммент"
+                   Margin="0,10,110,0"
+                   FontAttributes="Bold"/>
+            
+            <Label HeightRequest="30"
+                   WidthRequest="100"
+                   Text="9 рублей"
+                   Margin="15,10,0,0"/>
+        </Grid>
+
+        <Grid Margin="0,10,0,0">
+            <Label HeightRequest="30"
+                   WidthRequest="80"
+                   Text="Репосты:"
+                   Margin="0,0,190,0"
+                   FontSize="16"/>
+            
+            <Label HeightRequest="30"
+                   WidthRequest="80"
+                   Text="Комменты:"
+                   Margin="100,0,0,0"
+                   FontSize="16"/>
+        </Grid>
+        <Grid>
+            <Border WidthRequest="125"
+                    HeightRequest="45"
+                    Margin="0,0,150,0"
+                    StrokeShape="RoundRectangle 8,8,8,8">
+
+                <Entry FontSize="15"
+                       TextColor="Black"
+                       Margin="10,0,0,0"
+                       VerticalOptions="Center"
+                       Placeholder="0"
+                       Keyboard="Numeric"
+                       Text="{Binding RepostsCount}"/>
+            </Border>
+
+            <Border WidthRequest="125"
+                    HeightRequest="45"
+                    Margin="130,0,0,0"
+                    StrokeShape="RoundRectangle 8,8,8,8">
+
+                <Entry FontSize="15"
+                       TextColor="Black"
+                       Margin="10,0,0,0"
+                       VerticalOptions="Center"
+                       Placeholder="0"
+                       Keyboard="Numeric"
+                       Text="{Binding CommentsCount}"/>
+            </Border>
+        </Grid>
+        <Border WidthRequest="270"
+                HeightRequest="45"
+                StrokeShape="RoundRectangle 8,8,8,8"
+                Margin="0,15,0,0">
+            
+            <Grid>
+                <Label Text="К оплате:"
+                       FontSize="15"
+                       HeightRequest="30"
+                       WidthRequest="63"
+                       Margin="0,10,150,0"
+                       TextColor="Gray"
+                       FontAttributes="Bold"/>
+                
+                <Label Text="{Binding Sum}"
+                       HeightRequest="20"
+                       Margin="100,0,0,0"
+                       TextColor="Gray"/>
+            </Grid>
+        </Border>
+
+        <Button Margin="0,10,0,0"
+                WidthRequest="280"
+                HeightRequest="50"
+                CornerRadius="30"
+                Text="Оплатить"
+                TextColor="White"
+                FontSize="16"
+                Command="{Binding PayCommand}">
+
+            <Button.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                    <GradientStop Color="#68A0FF" Offset="0.5" />
+                    <GradientStop Color="#3376FF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+    </StackLayout>
+
+</ContentPage>

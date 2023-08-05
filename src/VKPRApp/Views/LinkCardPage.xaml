@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.LinkCardPage"
+             Title="LinkCardPage"
+             Shell.NavBarIsVisible="False">
+    <StackLayout>
+        <Grid>
+            <ImageButton Source="backbutton"
+                         WidthRequest="20"
+                         HeightRequest="30"
+                         Margin="0,30,220,0"
+                         Command="{Binding GoBackCommand}"/>
+
+            <Button Text="Назад"
+                    Margin="0,28,140,0"
+                    FontSize="16"
+                    TextColor="#006FFD"
+                    BackgroundColor="Transparent"
+                    BorderWidth="0"
+                    HeightRequest="40"
+                    WidthRequest="75"
+                    Command="{Binding GoBackCommand}"/>
+        </Grid>
+
+        <Label FontSize="25"
+               WidthRequest="280"
+               HeightRequest="35"
+               Text="Привяжите карту"
+               Margin="20,30,0,0"/>
+
+        <Label FontSize="13"
+               Text="Для того чтобы воспользоваться функцией репоста и получить максимальное воздействие на продвижение вашего контента, необходимо привязать вашу карту для оплаты репостов. Этот процесс прост и безопасен, обеспечивая вам удобство использования нашего сервиса."
+               WidthRequest="250"
+               TextColor="Gray"
+               Margin="0,10,5,0"/>
+
+        <Border StrokeShape="RoundRectangle 10,10,10,10"
+                HeightRequest="50"
+                WidthRequest="280"
+                Margin="0,20,0,0">
+            
+            <Entry Keyboard="Numeric"
+                   Placeholder="0000 0000 0000 0000"
+                   VerticalOptions="Center"
+                   FontSize="18"
+                   Margin="20,0,0,0"
+                   Text="{Binding CardNumber}"/>
+        </Border>
+
+        <Grid>
+            <Border WidthRequest="140"
+                    HeightRequest="50"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Margin="0,0,140,0">
+                
+                <Entry FontSize="18"
+                       VerticalOptions="Center"
+                       Placeholder="00/0000"
+                       Margin="20,0,0,0"
+                       Text="{Binding ExpireDate}"/>
+            </Border>
+
+            <Border WidthRequest="140"
+                    HeightRequest="50"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Margin="140,0,0,0">
+
+                <Entry FontSize="18"
+                       VerticalOptions="Center"
+                       Placeholder="CVV"
+                       Margin="20,0,0,0"
+                       Text="{Binding CVV}"/>
+            </Border>
+        </Grid>
+
+        <Button Margin="0,20,0,0"
+                WidthRequest="280"
+                HeightRequest="50"
+                CornerRadius="30"
+                Text="Привязать карту"
+                TextColor="White"
+                FontSize="16"
+                Command="{Binding LinkCardCommand}">
+
+            <Button.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                    <GradientStop Color="#68A0FF" Offset="0.5" />
+                    <GradientStop Color="#3376FF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VKPRApp.Views.FailedTaskPage"
+             Title="FailedTaskPage"
+             Shell.NavBarIsVisible="False">
+
+    <StackLayout>
+        <Label FontSize="23"
+               TextColor="#E19500"
+               Text="Упс, вы не корректно выполнили задание"
+               Margin="20,30,0,0"/>
+
+        <Label FontSize="15"
+               TextColor="Gray"
+               Text="Убедитесь, что вы выполнили задание точно в соответствии с описанием и указанными инструкциями."
+               Margin="0,10,0,0"
+               WidthRequest="275"/>
+
+        <Button Margin="0,20,0,0"
+                WidthRequest="280"
+                HeightRequest="50"
+                CornerRadius="30"
+                Text="Попробовать снова"
+                TextColor="White"
+                FontSize="16"
+                Command="{Binding GoBackCommand}">
+
+            <Button.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                    <GradientStop Color="#68A0FF" Offset="0.5" />
+                    <GradientStop Color="#3376FF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+
+    </StackLayout>
+    
+</ContentPage>
