@@ -8,7 +8,6 @@ namespace VKPRApp.Services
     class UserService : IUserService
     {
         const string _accessToken = "askdjhAKSHkjdhsjkasm.12ASHdjjsd";
-        const string _requestBase = $"{Constants.BaseUri}api/";
 
         private readonly IRequestCreationService _requestCreationService;
         private readonly HttpClient _client;
@@ -23,7 +22,9 @@ namespace VKPRApp.Services
         {
             string json = JsonConvert.SerializeObject(user);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"{_requestBase}addUser?jsonUser={json}&accessToken={_accessToken}");
+            string requestUri = _requestCreationService.CreateAddUserRequest(_accessToken, json);
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUri);
             
             await _client.SendAsync(request);
         }
@@ -46,7 +47,7 @@ namespace VKPRApp.Services
         {
             try
             {
-                string requestUri = $"{_requestBase}getUserById?userId={userId}&accessToken={_accessToken}";
+                string requestUri = _requestCreationService.CreateGetUserByIdRequest(_accessToken, userId);
                 return await _client.GetFromJsonAsync<Shared.Models.User>(requestUri);
             }
             catch
@@ -57,13 +58,13 @@ namespace VKPRApp.Services
 
         public async Task<List<Shared.Models.User>> GetUsers()
         {
-            string requestUri = $"{_requestBase}getUsers?accessToken={_accessToken}";
+            string requestUri = _requestCreationService.CreateGetUsersRequest(_accessToken);
             return await _client.GetFromJsonAsync<List<Shared.Models.User>>(requestUri);
         }
 
         public async Task<Shared.Models.User> SetBankCardToNull(string userId)
         {
-            string requestUri = $"{_requestBase}setBankCardToNull?userId={userId}&accessToken={_accessToken}";
+            string requestUri = _requestCreationService.CreateSetBankCardToNullRequest(_accessToken, userId);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, requestUri);
             HttpResponseMessage response = await _client.SendAsync(request);
@@ -75,7 +76,7 @@ namespace VKPRApp.Services
 
         public async Task<Shared.Models.User> UpdateAutoRenewal(string userId, bool value)
         {
-            string requestUri = $"{_requestBase}updateAutoRenewal?userId={userId}&value={value}&accessToken={_accessToken}";
+            string requestUri = _requestCreationService.CreateUpdateAutoRenewalRequest(_accessToken, userId, value);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, requestUri);
             HttpResponseMessage response = await _client.SendAsync(request);
@@ -89,7 +90,7 @@ namespace VKPRApp.Services
         {
             string json = JsonConvert.SerializeObject(user);
 
-            string requestUri = $"{_requestBase}updateUser?jsonUser={json}&accessToken={_accessToken}";
+            string requestUri = _requestCreationService.CreateUpdateRequest(_accessToken, json);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, requestUri);
             HttpResponseMessage response = await _client.SendAsync(request);

@@ -35,6 +35,60 @@ namespace VKPRApp.Services.RequestCreationServices
                                      .Build();
         }
 
+        public string CreateGetUsersRequest(string apiKey)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("getUsers")
+                                     .AddAttribute("accessToken", apiKey)
+                                     .Build();
+        }
+
+        public string CreateGetUserByIdRequest(string apiKey, string userId)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("getUserById")
+                                     .AddAttribute("accessToken", apiKey)
+                                     .AddAttribute("userId", userId)
+                                     .Build();
+        }
+
+        public string CreateAddUserRequest(string apiKey, string jsonUser)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("addUser")
+                                     .AddAttribute("accessToken", apiKey)
+                                     .AddAttribute("jsonUser", jsonUser)
+                                     .Build();
+        }
+
+        public string CreateSetBankCardToNullRequest(string apiKey, string userId)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("setBankCardToNull")
+                                     .AddAttribute("accessToken", apiKey)
+                                     .AddAttribute("userId", userId)
+                                     .Build();
+        }
+
+        public string CreateUpdateRequest(string apiKey, string jsonUser)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("update")
+                                     .AddAttribute("accessToken", apiKey)
+                                     .AddAttribute("jsonUser", jsonUser)
+                                     .Build();
+        }
+
+        public string CreateUpdateAutoRenewalRequest(string apiKey, string userId, bool value)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("updateAutoRenewal")
+                                     .AddAttribute("accessToken", apiKey)
+                                     .AddAttribute("userId", userId)
+                                     .AddAttribute("value", value.ToString())
+                                     .Build();
+        }
+
         public string CreateWallGetRequest(string[] ids, Shared.Models.Task task)
         {
             string methodName = GetWallMethodNameByTaskType(task.TaskType);
