@@ -40,9 +40,9 @@ namespace VKPRApp.ViewModels
 
                 await _installer.Install(result.AccessToken, result.Properties["user_id"]);
             }
-            catch (Exception ex)
+            catch
             {
-                await Console.Out.WriteLineAsync(ex.Message);
+                
             }
         }
 
