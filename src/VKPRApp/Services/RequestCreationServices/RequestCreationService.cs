@@ -5,6 +5,7 @@ namespace VKPRApp.Services.RequestCreationServices
     public class RequestCreationService : IRequestCreationService
     {
         const string _vkApiBaseUrl = "https://api.vk.com/method";
+        const string _siteBaseUrl = $"{Constants.BaseUri}/api";
 
         private readonly IApiRequestBuilder _apiRequestBuilder;
 
@@ -21,6 +22,16 @@ namespace VKPRApp.Services.RequestCreationServices
                                      .AddAttribute("user_ids", userId)
                                      .AddAttribute("expires_in", expiresIn)
                                      .AddAttribute("v", "5.131")
+                                     .Build();
+        }
+
+        public string CreateCompleteTaskRequest(string apiKey, string userId, string taskType)
+        {
+            return _apiRequestBuilder.AddBase(_siteBaseUrl)
+                                     .AddMethod("completeTaskCommand")
+                                     .AddAttribute("userId", userId)
+                                     .AddAttribute("accessToken", apiKey)
+                                     .AddAttribute("taskType", taskType)
                                      .Build();
         }
 

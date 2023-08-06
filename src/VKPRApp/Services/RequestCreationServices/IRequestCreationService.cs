@@ -5,6 +5,8 @@ namespace VKPRApp.Services.RequestCreationServices
     {
         string CreateUsersGetRequest(string apiKey, string userId, string expiresIn);
 
+        string CreateCompleteTaskRequest(string apiKey, string userId, string taskType);
+
         string CreateWallGetRequest(string[] ids, Shared.Models.Task task);
     }
 }

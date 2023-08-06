@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http.Json;
-using VKPRApp.Builders.ApiRequestBuilders;
+using VKPRApp.Services.RequestCreationServices;
 using VKPRApp.Shared.Services;
 
 namespace VKPRApp.Services
@@ -10,13 +10,13 @@ namespace VKPRApp.Services
         const string _accessToken = "askdjhAKSHkjdhsjkasm.12ASHdjjsd";
         const string _requestBase = $"{Constants.BaseUri}api/";
 
-        private readonly IApiRequestBuilder _requestBuilder;
+        private readonly IRequestCreationService _requestCreationService;
         private readonly HttpClient _client;
 
-        public UserService(HttpClient client, IApiRequestBuilder requestBuilder)
+        public UserService(HttpClient client, IRequestCreationService requestCreationService)
         {
             _client = client;
-            _requestBuilder = requestBuilder;
+            _requestCreationService = requestCreationService;
         }
 
         public async Task AddUser(Shared.Models.User user)
@@ -32,7 +32,7 @@ namespace VKPRApp.Services
         {
             int taskTypeNum = (int)taskType;
 
-            string requestUri = $"{_requestBase}completeTaskCommand?taskType={taskTypeNum}&userId={userId}&accessToken={_accessToken}";
+            string requestUri = _requestCreationService.CreateCompleteTaskRequest(_accessToken, userId, taskTypeNum.ToString());
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, requestUri);
 
