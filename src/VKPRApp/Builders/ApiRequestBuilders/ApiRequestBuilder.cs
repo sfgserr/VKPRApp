@@ -4,17 +4,22 @@ namespace VKPRApp.Builders.ApiRequestBuilders
 {
     public class ApiRequestBuilder : IApiRequestBuilder
     {
-        private string _url;
-
-        private readonly string _baseUrl = "https://api.vk.com";
-
-        public ApiRequestBuilder()
-        {
-            _url = _baseUrl;
-        }
+        private string _url = string.Empty;
 
         public int Count { get; private set; }
         public bool IsMethodAdded { get; private set; }
+        public bool IsBaseAdded { get; private set; }
+
+        public IApiRequestBuilder AddBase(string baseUrl)
+        {
+            if (IsBaseAdded)
+                throw new BaseAlreadyAddedException();
+
+            _url += baseUrl;
+            IsBaseAdded = true;
+
+            return this;
+        }
 
         public IApiRequestBuilder AddAttribute(string attributeName, string value)
         {
@@ -30,10 +35,13 @@ namespace VKPRApp.Builders.ApiRequestBuilders
 
         public IApiRequestBuilder AddMethod(string methodName)
         {
+            if (!IsBaseAdded)
+                throw new BaseIsNotAddedException();
+
             if (IsMethodAdded)
                 throw new MethodAlreadyAddedException();
 
-            _url = $"{_url}/method/{methodName}";
+            _url = $"{_url}/{methodName}";
 
             IsMethodAdded = true;
 
@@ -44,9 +52,11 @@ namespace VKPRApp.Builders.ApiRequestBuilders
         {
             string url = _url;
 
-            _url = _baseUrl;
+            _url = string.Empty;
+
             Count = 0;
             IsMethodAdded = false;
+            IsBaseAdded = false;
 
             return url;
         }

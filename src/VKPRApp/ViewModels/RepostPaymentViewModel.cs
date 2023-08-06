@@ -17,7 +17,7 @@ namespace VKPRApp.ViewModels
             _userService = userService;
             _authenticator = authenticator;
 
-            NavigateBackCommand = new RelayCommand(async obj => await NavigateBack());
+            NavigateBackCommand = new RelayCommand(async obj => await GoBack());
             PayCommand = new RelayCommand(async obj => await Pay());
         }
 
@@ -101,12 +101,7 @@ namespace VKPRApp.ViewModels
                 }
             }
 
-            await Shell.Current.GoToAsync("..");
-        }
-
-        private async Task NavigateBack()
-        {
-            await Shell.Current.GoToAsync("..");
+            await GoBack();
         }
     }
 }

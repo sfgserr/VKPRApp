@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using VKPRApp.Commands;
-using VKPRApp.Views;
 
 namespace VKPRApp.ViewModels
 {

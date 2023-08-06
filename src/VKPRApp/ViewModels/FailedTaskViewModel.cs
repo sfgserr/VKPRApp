@@ -11,10 +11,5 @@ namespace VKPRApp.ViewModels
         }
 
         public ICommand GoBackCommand { get; }
-
-        private async Task GoBack()
-        {
-            await Shell.Current.GoToAsync("//TasksPage");
-        }
     }
 }

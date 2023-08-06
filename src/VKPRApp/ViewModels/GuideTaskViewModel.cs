@@ -25,7 +25,7 @@ namespace VKPRApp.ViewModels
             _urlService = urlService;
             _checkTaskService = checkTaskService;
 
-            NavigateBackCommand = new RelayCommand(async obj => await NavigateBack());
+            NavigateBackCommand = new RelayCommand(async obj => await GoBack());
             OpenUrlCommand = new RelayCommand(async obj => await Browser.OpenAsync(Task.PostUrl));
             CheckTaskCommand = new RelayCommand(async obj => await CheckTask());
         }
@@ -76,11 +76,6 @@ namespace VKPRApp.ViewModels
             {
                 await Shell.Current.GoToAsync(nameof(FailedTaskPage));
             } 
-        }
-       
-        private async Task NavigateBack()
-        {
-            await Shell.Current.GoToAsync("..");
         }
     }
 }

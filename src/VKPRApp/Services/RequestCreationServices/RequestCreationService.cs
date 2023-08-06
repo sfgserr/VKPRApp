@@ -4,6 +4,8 @@ namespace VKPRApp.Services.RequestCreationServices
 {
     public class RequestCreationService : IRequestCreationService
     {
+        const string _vkApiBaseUrl = "https://api.vk.com/method";
+
         private readonly IApiRequestBuilder _apiRequestBuilder;
 
         public RequestCreationService(IApiRequestBuilder apiRequestBuilder)
@@ -13,7 +15,8 @@ namespace VKPRApp.Services.RequestCreationServices
 
         public string CreateUsersGetRequest(string apiKey, string userId, string expiresIn)
         {
-            return _apiRequestBuilder.AddMethod("users.get")
+            return _apiRequestBuilder.AddBase(_vkApiBaseUrl)
+                                     .AddMethod("users.get")
                                      .AddAttribute("access_token", apiKey)
                                      .AddAttribute("user_ids", userId)
                                      .AddAttribute("expires_in", expiresIn)
@@ -25,7 +28,8 @@ namespace VKPRApp.Services.RequestCreationServices
         {
             string methodName = GetWallMethodNameByTaskType(task.TaskType);
 
-            return _apiRequestBuilder.AddMethod(methodName)
+            return _apiRequestBuilder.AddBase(_vkApiBaseUrl)
+                                     .AddMethod(methodName)
                                      .AddAttribute("access_token", task.UserApiKey)
                                      .AddAttribute("owner_id", ids[0])
                                      .AddAttribute("post_id", ids[1])

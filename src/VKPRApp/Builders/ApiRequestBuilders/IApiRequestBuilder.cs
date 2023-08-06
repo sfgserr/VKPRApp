@@ -7,6 +7,10 @@ namespace VKPRApp.Builders.ApiRequestBuilders
 
         bool IsMethodAdded { get; }
 
+        bool IsBaseAdded { get; }
+
+        IApiRequestBuilder AddBase(string baseUrl);
+
         IApiRequestBuilder AddAttribute(string attributeName, string value);
 
         IApiRequestBuilder AddMethod(string methodName);

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http.Json;
+using VKPRApp.Builders.ApiRequestBuilders;
 using VKPRApp.Shared.Services;
 
 namespace VKPRApp.Services
@@ -9,11 +10,13 @@ namespace VKPRApp.Services
         const string _accessToken = "askdjhAKSHkjdhsjkasm.12ASHdjjsd";
         const string _requestBase = $"{Constants.BaseUri}api/";
 
+        private readonly IApiRequestBuilder _requestBuilder;
         private readonly HttpClient _client;
 
-        public UserService(HttpClient client)
+        public UserService(HttpClient client, IApiRequestBuilder requestBuilder)
         {
             _client = client;
+            _requestBuilder = requestBuilder;
         }
 
         public async Task AddUser(Shared.Models.User user)

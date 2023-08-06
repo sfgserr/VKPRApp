@@ -66,10 +66,5 @@ namespace VKPRApp.ViewModels
 
             await GoBack();
         }
-
-        private async Task GoBack()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
     }
 }

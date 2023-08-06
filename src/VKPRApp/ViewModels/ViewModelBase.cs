@@ -19,5 +19,10 @@ namespace VKPRApp.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
+
+        protected async Task GoBack()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }
