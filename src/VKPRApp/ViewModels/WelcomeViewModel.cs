@@ -13,11 +13,10 @@ namespace VKPRApp.ViewModels
             _installer = installer;
             _installer.IsLoadingChanged += OnIsLoadingChanged;
 
-            SwitchWebViewVisiblityCommand = new RelayCommand(async obj => await Login());
+            LoginCommand = new RelayCommand(async obj => await Login());
         }
 
-        public string Source => "https://oauth.vk.com/authorize?client_id=51695549&display=mobile&response_type=token&scope=wall&redirect_uri=https://oauth.vk.com/blank.html";
-        public ICommand SwitchWebViewVisiblityCommand { get; }
+        public ICommand LoginCommand { get; }
         public bool IsLoading => _installer.IsLoading;
 
         private bool _isVisible = false;

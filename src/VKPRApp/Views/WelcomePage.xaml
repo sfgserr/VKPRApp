@@ -52,8 +52,7 @@
                 Text="Зарегестрироваться через вк"
                 TextColor="White"
                 FontSize="16"
-                Command="{Binding SwitchWebViewVisiblityCommand}"
-                CommandParameter="VK">
+                Command="{Binding LoginCommand}">
 
                 <Button.Background>
                     <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
