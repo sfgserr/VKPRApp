@@ -81,14 +81,14 @@ namespace VKPRApp.Api.Controllers
             return Ok(users);
         }
 
-        [Route("completeTaskCommand")]
+        [Route("completeTask")]
         [HttpPut]
-        public async Task<ActionResult<Shared.Models.User>> CompleteTaskCommand(Shared.Models.TaskType taskType, string userId, string accessToken)
+        public async Task<ActionResult<Shared.Models.User>> CompleteTask(Shared.Models.TaskType taskType, string userId, string accessToken)
         {
             if (_accessToken != accessToken)
                 return Unauthorized();
 
-            return await _userService.CompleteTaskCommand(taskType, userId);
+            return await _userService.CompleteTask(taskType, userId);
         }
 
         [Route("setBankCardToNull")]

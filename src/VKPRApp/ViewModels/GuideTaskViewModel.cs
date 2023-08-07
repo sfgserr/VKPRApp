@@ -65,7 +65,7 @@ namespace VKPRApp.ViewModels
                 Task.Count--;
 
                 _authenticator.CurrentUser = await _userService.UpdateUser(_authenticator.CurrentUser);
-                _authenticator.CurrentUser = await _userService.CompleteTaskCommand(Task.TaskType, _authenticator.CurrentUser.VKUser.UserId);
+                _authenticator.CurrentUser = await _userService.CompleteTask(Task.TaskType, _authenticator.CurrentUser.VKUser.UserId);
 
                 await Shell.Current.GoToAsync(nameof(SuccessfullCompletedTaskPage), new Dictionary<string, object>
                 {

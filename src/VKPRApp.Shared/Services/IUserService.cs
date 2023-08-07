@@ -11,7 +11,7 @@ namespace VKPRApp.Shared.Services
 
         Task<Shared.Models.User> UpdateUser(Models.User user);
 
-        Task<Models.User> CompleteTaskCommand(Models.TaskType taskType, string userId);
+        Task<Models.User> CompleteTask(Models.TaskType taskType, string userId);
 
         Task<Models.User> SetBankCardToNull(string userId);
 

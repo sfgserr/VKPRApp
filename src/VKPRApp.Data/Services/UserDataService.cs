@@ -66,7 +66,7 @@ namespace VKPRApp.Data.Services
             }
         }
 
-        public async Task<Shared.Models.User> CompleteTaskCommand(Shared.Models.TaskType taskType, string userId)
+        public async Task<Shared.Models.User> CompleteTask(Shared.Models.TaskType taskType, string userId)
         {
             using (VKPRAppDbContext context = _factory.Create())
             {

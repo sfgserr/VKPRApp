@@ -8,5 +8,10 @@ namespace VKPRApp.Api.Controllers
         {
             return View("/Pages/Index.cshtml");
         }
+
+        public IActionResult Docs()
+        {
+            return View("/Pages/Docs.cshtml");
+        }
     }
 }

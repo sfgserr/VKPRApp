@@ -29,7 +29,7 @@ namespace VKPRApp.Services
             await _client.SendAsync(request);
         }
 
-        public async Task<Shared.Models.User> CompleteTaskCommand(Shared.Models.TaskType taskType, string userId)
+        public async Task<Shared.Models.User> CompleteTask(Shared.Models.TaskType taskType, string userId)
         {
             int taskTypeNum = (int)taskType;
 

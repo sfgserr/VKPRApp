@@ -1,0 +1,57 @@
+﻿@page
+@model VKPRApp.Api.Pages.DocsModel
+@{
+}
+<!DOCTYPE html/>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="~/css/Site.css"/>
+    </head>
+    <body>
+        <h1>Api Requests:</h1>
+        <table class="table-position" id="requests">
+            <tr>
+                <th>Method name</th>
+                <th>Parameters</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>getUsers</td>
+                <td>accessToken</td>
+                <td>Get all users</td>
+            </tr>
+            <tr>
+                <td>getUserById</td>
+                <td>accessToken, userId</td>
+                <td>Get user by his id if such user didn't exist returns NotFound'</td>
+            </tr>
+            <tr>
+                <td>addUser</td>
+                <td>accessToken, jsonUser</td>
+                <td>Add user to database</td>
+            </tr>
+            <tr>
+                <td>updateUser</td>
+                <td>accessToken, jsonUser</td>
+                <td>Update user</td>
+            </tr>
+            <tr>
+                <td>completeTask</td>
+                <td>accessToken, taskType:0(comment type), 1(repostType), userId</td>
+                <td>Remove finished task from user</td>
+            </tr>
+            <tr>
+                <td>updateAutoRenewal</td>
+                <td>accessToken, value: true, false, userId</td>
+                <td>Turns subscription auto renewal on or off</td>
+            </tr>
+            <tr>
+                <td>setBankCardToNull</td>
+                <td>accessToken, userId</td>
+                <td>Unlinks user bank card</td>
+            </tr>
+        </table>
+
+        <h4 class="info">To get access token send me message sfgserr@gmail.com</h4>
+    </body>
+</html>

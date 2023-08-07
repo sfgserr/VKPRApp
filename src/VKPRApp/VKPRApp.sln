@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKPRApp.Shared", "..\VKPRAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKPRApp.Data", "..\VKPRApp.Data\VKPRApp.Data.csproj", "{D98C9A5F-E547-47B4-81D3-AF31FE47952D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKPRApp.Api", "..\VKPRApp.Api\VKPRApp.Api.csproj", "{44396043-5A6A-4699-AD4F-C2338D5743A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKPRApp.Api", "..\VKPRApp.Api\VKPRApp.Api.csproj", "{44396043-5A6A-4699-AD4F-C2338D5743A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
