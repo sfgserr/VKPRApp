@@ -12,10 +12,10 @@ namespace VKPRApp.Services.UserCreationServices
             _userService = userService;
         }
 
-        public async Task<Shared.Models.User> CreateUser(string apiKey, Response response)
+        public async Task<Shared.Models.User> CreateUser(string apiKey, UserResponse response)
         {
-            Shared.Models.VKUser vkUser = new Shared.Models.VKUser(apiKey, response.response[0].id.ToString());
-            Shared.Models.User user = new Shared.Models.User(response.response[0].first_name, 100, response.response[0].last_name, null) { VKUser = vkUser };
+            Shared.Models.VKUser vkUser = new Shared.Models.VKUser(apiKey, response.Response[0].Id.ToString());
+            Shared.Models.User user = new Shared.Models.User(response.Response[0].FirstName, 100, response.Response[0].LastName, null) { VKUser = vkUser };
 
             await _userService.AddUser(user);
 

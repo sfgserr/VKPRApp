@@ -34,7 +34,7 @@ namespace VKPRApp.Stores.Authenticators
 
         public async Task LoginAsync(string apiKey, string userId)
         {
-            Response response = await _responseService.GetResponse(apiKey, userId, "86400");
+            UserResponse response = await _responseService.GetResponse(apiKey, userId, "86400");
 
             Shared.Models.User? user = await _responseService.GetUserFromResponse(response);
 

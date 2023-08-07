@@ -73,7 +73,7 @@ namespace VKPRApp.Services.RequestCreationServices
         public string CreateUpdateRequest(string apiKey, string jsonUser)
         {
             return _apiRequestBuilder.AddBase(_siteBaseUrl)
-                                     .AddMethod("update")
+                                     .AddMethod("updateUser")
                                      .AddAttribute("accessToken", apiKey)
                                      .AddAttribute("jsonUser", jsonUser)
                                      .Build();

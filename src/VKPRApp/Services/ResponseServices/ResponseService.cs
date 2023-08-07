@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
 using VKPRApp.ApiModels;
 using VKPRApp.Services.RequestCreationServices;
 using VKPRApp.Shared.Services;
@@ -18,18 +18,20 @@ namespace VKPRApp.Services.ResponseServices
             _requestCreationService = requestCreationService;
         }
 
-        public async Task<Response> GetResponse(string apiKey, string userId, string expiresIn)
+        public async Task<UserResponse> GetResponse(string apiKey, string userId, string expiresIn)
         {
             string request = _requestCreationService.CreateUsersGetRequest(apiKey, userId, expiresIn);
 
             string json = await _client.GetStringAsync(request);
 
-            return JsonSerializer.Deserialize<Response>(json);
+            UserResponse response = JsonConvert.DeserializeObject<UserResponse>(json);
+
+            return response;
         }
 
-        public async Task<Shared.Models.User> GetUserFromResponse(Response response)
+        public async Task<Shared.Models.User> GetUserFromResponse(UserResponse response)
         {
-            return await _userService.GetUserByUserId(response.response.First().id.ToString());
+            return await _userService.GetUserByUserId(response.Response.First().Id.ToString());
         }
     }
 }

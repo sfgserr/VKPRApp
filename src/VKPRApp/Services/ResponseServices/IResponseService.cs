@@ -4,8 +4,8 @@ namespace VKPRApp.Services.ResponseServices
 {
     public interface IResponseService
     {
-        Task<Response> GetResponse(string apiKey, string userId, string expiresIn);
+        Task<UserResponse> GetResponse(string apiKey, string userId, string expiresIn);
 
-        Task<Shared.Models.User> GetUserFromResponse(Response response);
+        Task<Shared.Models.User> GetUserFromResponse(UserResponse response);
     }
 }
