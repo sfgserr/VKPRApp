@@ -46,10 +46,17 @@ namespace VKPRApp.Services
         public async Task<Shared.Models.User> GetUserByUserId(string userId)
         {
             string requestUri = _requestCreationService.CreateGetUserByIdRequest(_accessToken, userId);
-            
-            Shared.Models.User user = await _client.GetFromJsonAsync<Shared.Models.User>(requestUri);
 
-            return user;
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+
+            HttpResponseMessage response = await _client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<Shared.Models.User>(json);
         }
 
         public async Task<List<Shared.Models.User>> GetUsers()
